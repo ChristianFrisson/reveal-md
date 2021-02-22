@@ -11,10 +11,10 @@
     <meta property="og:image" content="{{{absoluteUrl}}}/featured-slide.jpg" />
     <meta property="og:url" content="{{{absoluteUrl}}}" />
     {{/absoluteUrl}}
-    <link rel="stylesheet" href="{{{base}}}/css/reveal.css" />
+    <link rel="shortcut icon" href="{{{base}}}/favicon.ico"/>
+    <link rel="stylesheet" href="{{{base}}}/dist/reveal.css" />
     <link rel="stylesheet" href="{{{themeUrl}}}" id="theme" />
     <link rel="stylesheet" href="{{{base}}}{{{highlightThemeUrl}}}" />
-    <link rel="stylesheet" href="{{{base}}}/css/print/{{#print}}pdf{{/print}}{{^print}}paper{{/print}}.css" type="text/css" media="print" />
     {{#cssPaths}}
     <link rel="stylesheet" href="{{{base}}}/{{{.}}}" />
     {{/cssPaths}}
@@ -30,8 +30,13 @@
       <div class="slides">{{{slides}}}</div>
     </div>
 
-    <script src="{{{base}}}/js/reveal.js"></script>
+    <script src="{{{base}}}/dist/reveal.js"></script>
 
+    <script src="{{{base}}}/plugin/markdown/markdown.js"></script>
+    <script src="{{{base}}}/plugin/highlight/highlight.js"></script>
+    <script src="{{{base}}}/plugin/zoom/zoom.js"></script>
+    <script src="{{{base}}}/plugin/notes/notes.js"></script>
+    <script src="{{{base}}}/plugin/math/math.js"></script>
     <script>
       function extend() {
         var target = {};
@@ -90,10 +95,17 @@
         //   pie: { backgroundColor: [["rgba(0,0,0,.8)", "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"]] },
         //   radar: { borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"] },
         // }
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
       };
 
       // options from URL query string
-      var queryOptions = Reveal.getQueryHash() || {};
+      var queryOptions = Reveal().getQueryHash() || {};
 
       var options = extend(defaultOptions, {{{revealOptionsStr}}}, queryOptions);
     </script>

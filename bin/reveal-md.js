@@ -43,10 +43,16 @@ updater({ pkg }).notify();
         server.close();
       } else {
         [server, initialUrl] = await startServer();
-        !disableAutoOpen && open(initialUrl);
+        !disableAutoOpen && open(initialUrl, { url: true });
+        process.on('SIGINT', () => {
+          console.log('Received SIGINT, closing gracefully.');
+          server.close();
+          process.exit(128);
+        });
       }
     } catch (err) {
       console.error(err);
+      process.exit(1);
     }
   } else {
     const help = await fs.readFile(path.join(__dirname, './help.txt'));

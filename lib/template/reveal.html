@@ -11,6 +11,8 @@
     <meta property="og:image" content="{{{absoluteUrl}}}/featured-slide.jpg" />
     <meta property="og:url" content="{{{absoluteUrl}}}" />
     {{/absoluteUrl}}
+    <link rel="stylesheet" href="module/reveald3/demo/reveal.js/css/custom-gc.css" />
+    <link rel="stylesheet" href="module/reveal.js-plugins/spreadsheet/spreadsheet.css">
     <link rel="shortcut icon" href="{{{base}}}/favicon.ico"/>
     <link rel="stylesheet" href="{{{base}}}/dist/reveal.css" />
     <link rel="stylesheet" href="{{{themeUrl}}}" id="theme" />
@@ -58,14 +60,13 @@
 
       // Optional libraries used to extend on reveal.js
       var deps = [
-        { src: '{{{base}}}/plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
         { src: '{{{base}}}/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
-        { src: '{{{base}}}/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-        { src: '{{{base}}}/plugin/zoom-js/zoom.js', async: true },
+        { src: '{{{base}}}/plugin/highlight/highlight.js', async: true },
+        { src: '{{{base}}}/plugin/zoom/zoom.js', async: true },
         { src: '{{{base}}}/plugin/notes/notes.js', async: true },
         { src: '{{{base}}}/plugin/math/math.js', async: true },
         // { src: '{{{base}}}/module/reveal.js-plugins/chart/Chart.min.js' },				
-	// { src: '{{{base}}}/module/reveal.js-plugins/chart/csv2chart.js' }
+	      // { src: '{{{base}}}/module/reveal.js-plugins/chart/csv2chart.js' }
       ];
 
       // default options to init reveal.js
@@ -95,6 +96,12 @@
         //   pie: { backgroundColor: [["rgba(0,0,0,.8)", "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"]] },
         //   radar: { borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"] },
         // }
+        // spreadsheet: {
+        //   // fontsize: 24,
+        //   width: 150,
+        //   delimiter: ",",
+        //   precision: 4 // the maximum number of digits after the comma
+        // },
         plugins: [
           RevealMarkdown,
           RevealHighlight,
